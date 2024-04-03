@@ -9,23 +9,13 @@ import SwiftUI
 
 struct FrameworkDetailView: View {
     var framework: Framework
-    @Binding var isShowingDetalView: Bool
+    @Binding var isShowingDetailView: Bool
     @State private var isShowingSafariView = false
     
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                Button {
-                    isShowingDetalView = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(Color(.label))
-                        .imageScale(.large)
-                        .frame(width: 44, height: 44)
-                }
-            }
-            .padding()
+            
+            XDismissButton(isShowingDetailView: $isShowingDetailView)
             Spacer()
             
             FrameworkTitleView(framework: framework)
@@ -49,6 +39,6 @@ struct FrameworkDetailView: View {
 }
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetalView: .constant(true))
+    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(true))
         .preferredColorScheme(.dark)
 }
